@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamwayk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 19:36:31 by pnamwayk          #+#    #+#             */
-/*   Updated: 2022/07/02 21:18:04 by pnamwayk         ###   ########.fr       */
+/*   Created: 2022/08/02 12:33:57 by pnamwayk          #+#    #+#             */
+/*   Updated: 2022/08/06 19:30:45 by pnamwayk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int print)
+#include <string.h>
+
+void	ft_bzero(void *str, size_t len)
 {
-	if (print >= 32 && print <= 126)
-		return (1);
-	return (0);
+	size_t			index;
+	unsigned char	*ptr;
+
+	index = 0;
+	ptr = str;
+	while (index < len)
+	{
+		ptr[index++] = '\0';
+	}
 }

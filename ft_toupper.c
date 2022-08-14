@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamwayk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 19:36:31 by pnamwayk          #+#    #+#             */
-/*   Updated: 2022/07/02 21:18:04 by pnamwayk         ###   ########.fr       */
+/*   Created: 2022/07/02 19:59:48 by pnamwayk          #+#    #+#             */
+/*   Updated: 2022/07/02 23:58:26 by pnamwayk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int print)
+int	ft_toupper(int upper)
 {
-	if (print >= 32 && print <= 126)
-		return (1);
-	return (0);
+	if (upper >= 'a' && upper <= 'z')
+		upper -= 32;
+	return (upper);
 }

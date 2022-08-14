@@ -1,22 +1,22 @@
-#include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnamwayk <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/02 19:19:23 by pnamwayk          #+#    #+#             */
+/*   Updated: 2022/07/02 21:16:28 by pnamwayk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isalpha(int a)
+int	ft_isalnum(int alnum)
 {
-    if ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z'))
+	if (alnum >= '0' && alnum <= '9')
+		return (1);
+	else if (alnum >= 'a' && alnum <= 'z')
+		return (1);
+	else if (alnum >= 'A' && alnum <= 'Z')
 		return (1);
 	return (0);
-}
-
-int ft_isdigit(int d)
-{
-    if (d >= '0' && d <= '9')
-		return (1);
-	return (0);
-}
-
-int ft_isalnum(int c)
-{
-    if(ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
-        return (1);
-    return (0);
 }
