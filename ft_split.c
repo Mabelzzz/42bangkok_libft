@@ -1,65 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnamwayk <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/15 13:05:51 by pnamwayk          #+#    #+#             */
+/*   Updated: 2022/08/15 22:09:05 by pnamwayk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-size_t get_word(char *start, char **word, int index, char c, int count)
+size_t	cnt_alphabet(char const *s, char c)
 {
-    int al;
+	size_t	i;
 
-    al = 0;
-    while (word[count][al] != c)
-    {
-        word[count][al] = start[index];
-        index++;
-        al++;
-    }
-    free(word[count]);
-    return (al + 1);
+	i = 0;
+	while (s[i] != 0 && s[i] != c)
+		i++;
+	return (i);
 }
 
-size_t count_size(char **word, char *s, char c)
+char	*keep_alphabet(char const *s, char c)
 {
-    char    *start;
-    int     i;
-    int     count;
-    size_t  ml;
+	size_t	i;
+	char	*word;
 
-    i = 0;
-    count = 0;
-    ml = 0;
-    start = (char *)s;
-    while (start[i] != 0)
-    {
-        if (start[i] == c && start[i + 1] != c && start[i + 1] != 0)
-        {
-            ml += get_word(start, word, i + 1, c, count);
-            count++;
-        }
-        i++;
-    }
-    return(ml + 1);
+	i = 0;
+	word = malloc(sizeof(char) * (cnt_alphabet(s, c) + 1));
+	if (!word)
+		return (NULL);
+	while (s[i] && s[i] != c && i <= cnt_alphabet(s, c))
+	{
+		word[i] = s[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
 }
 
-char    **ft_split(char const *s, char c)
-{
-    char **word;
+size_t	cnt_word(char const *s, char c)
+{	
+	size_t	count;
+	int		i;
 
-    word = NULL;
-    if (!s)
-        return (NULL);
-    word = (char **)malloc(sizeof(char) * count_size(word, (char *)s, c) + 1);
-    if (!word)
-        return (NULL);
-
-    
-    return (word);
+	i = 0;
+	count = 0;
+	while (s[i] != 0)
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] && s[i] != c)
+			count++;
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	return (count);
 }
 
+char	**ft_split(char const *s, char c)
+{
+	char	**word;
+	size_t	i;
+	size_t	j;
 
-// int main(void)
-// {
-//     char *s = "  Lucky Suki ";
-//     char c1 = ' ';
-//     char c2 = 'u';
-
-//     printf("%d \n", split(s, c1));
-//     printf("%d \n", split(s, c2));
-// }
+	if (!s)
+		return (NULL);
+	word = (char **)malloc(sizeof(char *) * (cnt_word(s, c) + 1));
+	if (!word)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (j < cnt_word(s, c))
+	{
+		while (s[i] != 0 && s[i] == c)
+			i++;
+		word[j] = keep_alphabet(&s[i], c);
+		while (s[i] != 0 && s[i] != c)
+			i++;
+		j++;
+	}
+	word[j] = NULL;
+	return (word);
+}

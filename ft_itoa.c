@@ -6,7 +6,7 @@
 /*   By: pnamwayk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 23:42:12 by pnamwayk          #+#    #+#             */
-/*   Updated: 2022/08/14 23:42:16 by pnamwayk         ###   ########.fr       */
+/*   Updated: 2022/08/15 22:49:56 by pnamwayk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,24 @@ static void	get_nbr(long nb, int count, int i, char *str)
 	str[i] = 0;
 }
 
-char	*ft_itoa(int nb)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		count;
-	long	nb1;
+	long	nb;
 
-	nb1 = nb;
-	count = count_nbr(nb);
+	nb = n;
+	count = count_nbr(n);
 	str = malloc(sizeof(char) * count + 1);
 	if (!str)
 		return (NULL);
-	if (nb1 >= 0 && nb1 <= 2147483647)
-		get_nbr(nb1, count, 0, str);
-	else if (nb1 < 0 && nb1 >= -2147483648)
+	if (nb >= 0 && nb <= 2147483647)
+		get_nbr(nb, count, 0, str);
+	else if (nb < 0 && nb >= -2147483648)
 	{
 		str[0] = '-';
-		nb1 *= -1;
-		get_nbr(nb1, count - 1, 1, str);
+		nb *= -1;
+		get_nbr(nb, count - 1, 1, str);
 	}
 	return (str);
 }

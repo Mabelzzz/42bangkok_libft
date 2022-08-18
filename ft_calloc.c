@@ -6,7 +6,7 @@
 /*   By: pnamwayk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 21:11:44 by pnamwayk          #+#    #+#             */
-/*   Updated: 2022/08/14 23:11:11 by pnamwayk         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:08:44 by pnamwayk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,4 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ft_bzero(ptr, count * size);
 	return (ptr);
-}	
+}

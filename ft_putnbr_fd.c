@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnamwayk <pnamwayk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pnamwayk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:34:19 by pnamwayk          #+#    #+#             */
-/*   Updated: 2022/08/08 21:53:48 by pnamwayk         ###   ########.fr       */
+/*   Updated: 2022/08/16 00:15:37 by pnamwayk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,18 @@ void	show_nbr(int nb, int count, int fd)
 	}
 }
 
-void	ft_putnbr_fd(int nb, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (nb >= 0 && nb <= 2147483647)
+	if (n >= 0 && n <= 2147483647)
 	{
-		show_nbr(nb, count_nbr(nb), fd);
+		show_nbr(n, count_nbr(n), fd);
 	}
-	else if (nb < 0 && nb > -2147483648)
+	else if (n < 0 && n > -2147483648)
 	{
 		ft_putchar_fd('-', fd);
-		show_nbr(-nb, count_nbr(-nb), fd);
+		show_nbr(-n, count_nbr(-n), fd);
 	}
-	else if (nb == -2147483648)
+	else if (n == -2147483648)
 	{
 		ft_putstr_fd("-2147483648", fd);
 	}
